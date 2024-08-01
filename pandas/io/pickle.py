@@ -96,7 +96,7 @@ def to_pickle(
     2    2    7
     3    3    8
     4    4    9
-    """  # noqa: E501
+    # noqa: E501
     if protocol < 0:
         protocol = pickle.HIGHEST_PROTOCOL
 
@@ -115,6 +115,7 @@ def to_pickle(
     storage_options=_shared_docs["storage_options"],
     decompression_options=_shared_docs["decompression_options"] % "filepath_or_buffer",
 )
+ """ 
 def read_pickle(
     filepath_or_buffer: FilePath | ReadPickleBuffer,
     compression: CompressionOptions = "infer",
@@ -180,7 +181,7 @@ def read_pickle(
     2    2    7
     3    3    8
     4    4    9
-    """
+
     excs_to_catch = (AttributeError, ImportError, ModuleNotFoundError, TypeError)
     with get_handle(
         filepath_or_buffer,
@@ -208,3 +209,5 @@ def read_pickle(
         except UnicodeDecodeError:
             # e.g. can occur for files written in py27; see GH#28645 and GH#31988
             return pc.load(handles.handle, encoding="latin-1")
+
+        """
